@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const junaidRouter = require("./api/Junaid.js");
+const junaidRouter = require("./api/junaid.js");
 
 const PORT = process.env.PORT || 3000;
 

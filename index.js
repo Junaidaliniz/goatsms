@@ -1,24 +1,31 @@
 const express = require("express");
 const app = express();
 
-// 1. Dono API files ko yahan import karein
-const junaid = require("./api/junaid");   // file: api/junaid.js
-const pjunaid = require("./api/pjunaid"); // file: api/pjunaid.js
+// 1. Teeno API files ko yahan import karein
+const junaid = require("./api/junaid");   
+const pjunaid = require("./api/pjunaid"); 
+const njunaid = require("./api/njunaid"); // Nayi file yahan add hui
 
 const PORT = process.env.PORT || 3000;
 
-// 2. Dono ko alag-alag paths par set karein
-app.use("/junaid", junaid);   // Iska URL hoga: server-url.com/junaid?type=sms
-app.use("/pjunaid", pjunaid); // Iska URL hoga: server-url.com/pjunaid?type=sms
+// 2. Teeno ko alag-alag paths par set karein
+app.use("/junaid", junaid);   
+app.use("/pjunaid", pjunaid); 
+app.use("/njunaid", njunaid); // Iska URL hoga: .../njunaid?type=sms
 
-// Default Check
+// Default Check Page
 app.get("/", (req, res) => {
   res.json({ 
-    message: "Dono APIs online hain!",
-    endpoints: ["/junaid", "/pjunaid"]
+    status: "Success",
+    message: "Teeno APIs online hain!",
+    links: {
+        junaid: "/junaid?type=sms",
+        pjunaid: "/pjunaid?type=sms",
+        njunaid: "/njunaid?type=sms"
+    }
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });

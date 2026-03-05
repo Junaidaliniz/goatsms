@@ -4,6 +4,7 @@ const app = express();
 // 1. Teeno API files ko yahan import karein
 const junaid = require("./api/junaid");   
 const pjunaid = require("./api/pjunaid"); 
+const junaid = require("./api/pujunaid");
 const njunaid = require("./api/njunaid"); // Nayi file yahan add hui
 
 const PORT = process.env.PORT || 3000;
